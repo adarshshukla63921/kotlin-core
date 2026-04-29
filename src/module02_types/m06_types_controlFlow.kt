@@ -4,6 +4,12 @@ import kotlin.random.Random
 
 // here we will cover control flow.
 // if , if-else, when , for , while and so on
+
+// NOTE : This is not exactly a type , but well it is not a big enough part to get its own module.
+// DATE : 28/04/26
+
+
+// if you don't know what an enum is, you can ignore it for now
 enum class Bit {
     ZERO,
     ONE
@@ -13,6 +19,7 @@ fun randomBitGenerator() : Bit{
     return if(Random.nextBoolean()) Bit.ONE else Bit.ZERO
 }
 fun main(){
+    println("Enter an age : ")
     val age = readln().toIntOrNull()
 
     if(age != null){
@@ -56,6 +63,7 @@ fun main(){
     // we do not need to cover all the cases here extensively,
     // because we are not using it as an expression
 
+    println("Enter new Marks : ")
     val newMarks = readln().toIntOrNull()
     when(newMarks){
        in 90..100 -> println("Grade A")
@@ -74,6 +82,51 @@ fun main(){
         Bit.ZERO -> 0
     }
     println("The numeric value is $bitNumericValue")
+    println()
+
+    // NEW ADDITION : 29/04/26
+
+    // using for loops ->
+    println("For loops")
+    // classic use : iteration over some collection
+
+    val list = arrayOf("Adarsh","Seenu","Raj")
+    println("accessing the items in the list")
+    for(item in list){
+        println(item)
+    }
+
+    println("iteration over a range ie 1 to 5 (inclusive)")
+    // iteration over closed ranges
+    for(number in 1..5){
+        println(number)
+    }
+
+    // you can make our own iterators, and anything that has an iterator can use a for loop.
+    // we will look into it, in the future.
+    println("Using while loop")
+
+    // we are doing the classic , reverse the number.
+    var num = 321
+    var reversedNum = 0
+    while(num != 0){
+        val rem = num % 10
+        num /= 10
+        reversedNum = reversedNum*10 + rem
+    }
+    println(reversedNum)
+
+    // we can also use do-while loop here.
+    var roll : Int
+    do{
+        roll = Random.nextInt(1,7)
+        println("Roll : $roll")
+    }while (roll != 5)
+        println("Got 5")
+
+
+    // naturally kotlin does also support break, continue operators in loops.
+
 
 
 }
